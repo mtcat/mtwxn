@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { View, Text } from "@tarojs/components";
-import { AtTabs, AtTabsPane } from "taro-ui";
+import { AtTabs, AtTabsPane, AtAvatar } from "taro-ui";
 import "taro-ui/dist/style/components/tabs.scss";
+import "taro-ui/dist/style/components/avatar.scss";
 import "./index.scss";
+import avatarJpg from "../../asserts/avatar.jpg";
 
 const tabs = [
   { title: "天" },
@@ -10,16 +12,6 @@ const tabs = [
   { title: "分" },
   { title: "秒" }
 ];
-
-const style = {
-  display: "flex",
-  width: "100%",
-  height: "147px",
-  justifyContent: "center",
-  alignItems: "center",
-  fontSize: "24px",
-  backgroundColor: "#FAFBFC"
-};
 
 const startTime = new Date(2018, 4, 27, 13, 0, 0).getTime();
 
@@ -134,23 +126,35 @@ class Index extends Component {
           onClick={this.handleClick.bind(this)}
         >
           <AtTabsPane current={this.state.current} index={0}>
-            <View style={style}>{`${this.floor(this.state.days)}天`}</View>
+            <View className="tab-text-panel">{`${this.floor(
+              this.state.days
+            )}天`}</View>
           </AtTabsPane>
           <AtTabsPane current={this.state.current} index={1}>
-            <View style={style}>{`${this.floor(this.state.hours)}小时`}</View>
+            <View className="tab-text-panel">{`${this.floor(
+              this.state.hours
+            )}小时`}</View>
           </AtTabsPane>
           <AtTabsPane current={this.state.current} index={2}>
-            <View style={style}>{`${this.floor(this.state.minutes)}分钟`}</View>
+            <View className="tab-text-panel">{`${this.floor(
+              this.state.minutes
+            )}分钟`}</View>
           </AtTabsPane>
           <AtTabsPane current={this.state.current} index={3}>
-            <View style={style}>{`${this.floor(this.state.seconds)}秒`}</View>
+            <View className="tab-text-panel">{`${this.floor(
+              this.state.seconds
+            )}秒`}</View>
           </AtTabsPane>
         </AtTabs>
-        <View style={{ ...style, marginTop: 10 }}>{`${this.floor(
-          days
-        )}天${this.format(hours)}小时${this.format(minutes)}分钟${this.format(
-          seconds
-        )}秒`}</View>
+        <View
+          className="tab-text-panel"
+          style={{ marginTop: 10 }}
+        >{`${this.floor(days)}天${this.format(hours)}小时${this.format(
+          minutes
+        )}分钟${this.format(seconds)}秒`}</View>
+        <View className="avatar-image-circle">
+          <AtAvatar size="large" circle image={avatarJpg}></AtAvatar>
+        </View>
       </>
     );
   }

@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: 'mtwxn',
+  navigationBarTitleText: '妞猪家族',
 }
